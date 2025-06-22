@@ -11,7 +11,11 @@ export const counterReducer = createReducer(
   on(CounterActions.incrementCounter, (state) =>
     state.running ? { ...state, value: state.value + 1 } : state
   ),
-  on(CounterActions.resetCounter, () => initialCounterState)
+  on(CounterActions.resetCounter, state => ({
+    ...state,
+    value: 0,
+    running: false
+  }))
 
 
 );
